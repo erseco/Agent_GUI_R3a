@@ -1,0 +1,172 @@
+# depslib dependency file v1.0
+1396053873 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\agent.cpp
+	"agent.h"
+	"environment.h"
+	<iostream>
+	<vector>
+	<utility>
+
+1396053928 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\agent.h
+	<cstdlib>
+	<string>
+
+1396054167 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\environment.h
+	<fstream>
+	"agent.h"
+
+1396054135 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\environment.cpp
+	<iostream>
+	<iomanip>
+	<string>
+	"stdlib.h"
+	"environment.h"
+	"random_num_gen.h"
+	"include/GL/glui.h"
+
+1235575988 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\random_num_gen.h
+	<vector>
+
+1396064743 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\gl\glui.h
+	<cstdlib>
+	<GL/freeglut.h>
+	<GL/openglut.h>
+	"openglut.h"
+	<GLUT/glut.h>
+	<GL/glut.h>
+	<cstdio>
+	<cstring>
+	<string>
+	<vector>
+
+1207918590 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\gl\openglut.h
+	"openglut_std.h"
+	"openglut_ext.h"
+
+1208456742 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\gl\openglut_std.h
+	<windows.h>
+	"gl.h"
+	"glu.h"
+
+1107063320 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\gl\gl.h
+
+1208456814 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\gl\glu.h
+	<stddef.h>
+	"gl.h"
+
+1207918590 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\gl\openglut_ext.h
+
+1238537804 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\evaluator.cpp
+	"evaluator.h"
+	"environment.h"
+
+1237283772 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\evaluator.h
+	"agent.h"
+
+1396061607 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\gui.cpp
+	<fstream>
+	<sstream>
+	<iomanip>
+	<iostream>
+	<windows.h>
+	<unistd.h>
+	"GUI.h"
+	<stdlib.h>
+	"random_num_gen.h"
+	"environment.h"
+	"agent.h"
+	"evaluator.h"
+
+1396051850 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\gui.h
+	<fstream>
+	"include/GL/glui.h"
+
+1194153579 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui.cpp
+	"glui_internal_control.h"
+
+1194153580 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_internal_control.h
+	"GL/glui.h"
+	"glui_internal.h"
+
+1194153580 z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_internal.h
+	<cstdio>
+	<cmath>
+
+1194153579 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_bitmap_img_data.cpp
+
+1152171775 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_bitmaps.cpp
+	"GL/glui.h"
+	"glui_internal.h"
+	<cassert>
+
+1395597108 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_button.cpp
+	"glui_internal_control.h"
+
+1194153579 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_column.cpp
+	"glui_internal_control.h"
+
+1194153579 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_control.cpp
+	"glui_internal_control.h"
+
+1194153580 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_edittext.cpp
+	"glui_internal_control.h"
+	<cassert>
+
+1396060301 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_filebrowser.cpp
+	"GL/glui.h"
+	"glui_internal.h"
+	<sys/types.h>
+	<windows.h>
+	<dirent.h>
+	<unistd.h>
+	<sys/stat.h>
+
+1194153580 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_list.cpp
+	"glui_internal_control.h"
+	<cmath>
+	<sys/timeb.h>
+
+1194153580 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_node.cpp
+	"GL/glui.h"
+	"glui_internal.h"
+
+1194153580 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_panel.cpp
+	"glui_internal_control.h"
+
+1194153580 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_radio.cpp
+	"glui_internal_control.h"
+	<cassert>
+
+1194153580 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_rollout.cpp
+	"glui_internal_control.h"
+
+1194153580 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_scrollbar.cpp
+	"glui_internal_control.h"
+	<cmath>
+	<cassert>
+
+1194153581 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_spinner.cpp
+	"glui_internal_control.h"
+	<cmath>
+	<cassert>
+
+1194153581 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_statictext.cpp
+	"glui_internal_control.h"
+
+1194153581 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_string.cpp
+	"GL/glui.h"
+	<stdarg.h>
+
+1194153581 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\include\glui_window.cpp
+	"GL/glui.h"
+	"glui_internal.h"
+
+1236164460 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\main.cpp
+	"GUI.h"
+
+1236081600 source:z:\dropbox\universidad\2do curso\ia\practicas\practica 2\agent-gui-r3a-multi\random_num_gen.cpp
+	<iostream>
+	<stdlib.h>
+	"random_num_gen.h"
+	"evaluator.h"
+	"environment.h"
+
