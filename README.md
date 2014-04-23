@@ -1,7 +1,7 @@
 Agent_GUI_R3a
 =============
 
-Multiplatform version of the Tsung-Che Chiang's Agent_GUI_R3a simulator
+Multiplatform version of the Tsung-Che Chiang's Agent_GUI_R3a Vacuum Cleaner
 
 Este código está basado en el del profesor Tsung-Che Chiang de la NTNU (Norwegian University of Science and Technology, Taiwan).
 
