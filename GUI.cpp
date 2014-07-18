@@ -1,4 +1,4 @@
-#include<fstream>
+ï»¿#include<fstream>
 #include<sstream>
 #include<iomanip>
 #include<iostream>
@@ -19,7 +19,7 @@ using namespace GUI;
 const int NEWGAME_BTN_ID=102,SELECTMAP_BTN_ID=103,DISPLAY_BTN_ID=104,NEWMAP_BTN_ID=105;
 const int NEWMAP_OK_BTN_ID=202,NEWMAP_CANCEL_BTN_ID=203;
 const int SELECTMAP_SELECT_ID=302,SELECTMAP_CANCEL_BTN_ID=303;
-const int DO_ONE_STEP_BTN_ID=402,DO_ONE_RUN_BTN_ID=403,NEXT_RUN_BTN_ID=404,DO_ALL_RUN_BTN_ID=405;
+const int DO_ONE_STEP_BTN_ID=402,DO_ONE_RUN_BTN_ID=403,NEXT_RUN_BTN_ID=404,DO_ALL_RUN_BTN_ID=405, PRINT_BTN_ID=406;
 const int ERROR_OK_BTN_ID=502;
 
 char life_time_input[1000]="2000",total_runs_input[1000]="10",file_name_input[1000]="agent.map";
@@ -40,7 +40,7 @@ ifstream fin;
 
 GLUI *main_glui,*score_glui,*new_map_glui,*select_map_glui,*error_glui;
 GLUI_Button *new_map_btn,*select_map_btn,*new_map_ok_btn,*new_map_cancel_btn;
-GLUI_Button *do_one_step_btn,*display_btn,*do_one_run_btn,*next_run_btn,*do_all_run_btn;
+GLUI_Button *do_one_step_btn,*display_btn,*do_one_run_btn,*next_run_btn,*do_all_run_btn,*print_btn;
 GLUI_StaticText *time_step_text,*action_text,*dirty_degree_text,*consumed_energy_text;
 GLUI_StaticText *complete_runs_text,*total_score_text,*average_score_text;
 GLUI_FileBrowser *map_list;
@@ -101,16 +101,17 @@ void GUI::control_cb(int id){
 				new_map_cancel_btn=new GLUI_Button(select_map_glui,"Cancel",SELECTMAP_CANCEL_BTN_ID,control_cb);
 				map_list->set_allow_change_dir(false);
 				#ifdef _WIN32
-				//Hay que mirar como se le debería de pasar eso, para no tener que forzar
-				//a hacerlo en filebrowser.cpp y así no tocar el código de GLUI
-				//NOTA: De todas formas había un problema en glui_internal.h, así que
-				//hay que compilar siempre nuestra propia librería glui
+				//Hay que mirar como se le deberÃ­a de pasar eso, para no tener que forzar
+				//a hacerlo en filebrowser.cpp y asÃ­ no tocar el cÃ³digo de GLUI
+				//NOTA: De todas formas habÃ­a un problema en glui_internal.h, asÃ­ que
+				//hay que compilar siempre nuestra propia librerÃ­a glui
 				map_list->fbreaddir("map/");
 				#else
 				map_list->fbreaddir("map/");
 				#endif
 			break;
 		case DISPLAY_BTN_ID:
+			agent->PrintMap();
 			if(true){
 				long long s = atol(display_time);
 				for(long long t=atol(display_step);t>0 && current_time<life_time;--t){
@@ -176,6 +177,9 @@ void GUI::control_cb(int id){
 		case DO_ALL_RUN_BTN_ID:
 			doAllRun();
 			break;
+		case PRINT_BTN_ID:
+			agent->PrintMap();
+			break;
 		case ERROR_OK_BTN_ID:
 			error_glui->close();
 			break;
@@ -215,19 +219,19 @@ int GUI::startDraw(int argc,char **argv){
 		new GLUI_Column(score_glui,false);
 		new GLUI_Column(score_glui,false);
 		new GLUI_Column(score_glui,false);
-		new GLUI_StaticText(score_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(score_glui,"");
 		complete_runs_text = new GLUI_StaticText(score_glui,"");
-		new GLUI_StaticText(score_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(score_glui,"");
 		total_score_text = new GLUI_StaticText(score_glui,"");
-		new GLUI_StaticText(score_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(score_glui,"");
 		average_score_text = new GLUI_StaticText(score_glui,"");
-		new GLUI_StaticText(score_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(score_glui,"");
 	score_glui->set_main_gfx_window( main_window );
 	main_glui=GLUI_Master.create_glui_subwindow(main_window,GLUI_SUBWINDOW_RIGHT);
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(main_glui,"");
 		new_map_btn=new GLUI_Button(main_glui,"NewMap",NEWMAP_BTN_ID,control_cb);
 		select_map_btn=new GLUI_Button(main_glui,"SelectMap",SELECTMAP_BTN_ID,control_cb);
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(main_glui,"");
 		do_one_step_btn=new GLUI_Button(main_glui,"DoOneStep",DO_ONE_STEP_BTN_ID,control_cb);
 		do_one_step_btn->disable();
 		do_one_run_btn=new GLUI_Button(main_glui,"DoOneRun",DO_ONE_RUN_BTN_ID,control_cb);
@@ -235,22 +239,27 @@ int GUI::startDraw(int argc,char **argv){
 		next_run_btn=new GLUI_Button(main_glui,"NextRun",NEXT_RUN_BTN_ID,control_cb);
 		next_run_btn->disable();
 		do_all_run_btn=new GLUI_Button(main_glui,"DoAllRun",DO_ALL_RUN_BTN_ID,control_cb);
+
+		
+
+
 		do_all_run_btn->disable();
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
-		new GLUI_StaticText(main_glui,"DisplayOption");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_StaticText(main_glui,"DisplayOption");
 		new GLUI_EditText(main_glui,"Steps:",display_step);
 		new GLUI_EditText(main_glui,"Time:",display_time);
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
+		new GLUI_StaticText(main_glui,"");
 		display_btn=new GLUI_Button(main_glui,"Display",DISPLAY_BTN_ID,control_cb);
 		display_btn->disable();
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
-		new GLUI_StaticText(main_glui,"");//¥HªÅ¥Õ¦æ°µ¤À¹j 
-		new GLUI_Button(main_glui,"Quit",0,(GLUI_Update_CB)exit );//QUIT«ö¶sµ²§ôµ{¦¡ 
+		print_btn=new GLUI_Button(main_glui,"Print Map",PRINT_BTN_ID,control_cb);
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_StaticText(main_glui,"");
+		new GLUI_Button(main_glui,"Quit",0,(GLUI_Update_CB)exit ); 
 	main_glui->set_main_gfx_window( main_window );
 	glutMainLoop();
 	return 0;
@@ -275,7 +284,7 @@ void GUI::showScore(){
 	sout<<"ConsumedEnergy =  "<<consumed_energy;
 	consumed_energy_text->set_text(sout.str().c_str());
 	
-	/*®i¥ÜÁ`¤À*/
+	/*Â®iÂ¥ÃœÃ`Â¤Ã€*/
 	long long complete_runs=current_run-(current_time!=life_time);
 	//The Round has been completed 
 	sout.str("");
@@ -311,7 +320,7 @@ void GUI::doOneStep(){
 		consumed_energy=evaluator->ConsumedEnergy();
 		
 		++current_time;
-		if(current_time==life_time){//¤@½üµ²§ô 
+		if(current_time==life_time){//Â¤@Â½Ã¼ÂµÂ²Â§Ã´ 
 			do_one_step_btn->disable();
 			display_btn->disable();
 			do_one_run_btn->disable();
@@ -319,7 +328,7 @@ void GUI::doOneStep(){
 			total_dirty_degree+=dirty_degree;
 			total_consumed_energy+=consumed_energy;
 			
-			if(current_run<total_runs){//¬O§_ÁÙ¦³¤U¤@½ü 
+			if(current_run<total_runs){//Â¬OÂ§_ÃÃ™Â¦Â³Â¤UÂ¤@Â½Ã¼ 
 				next_run_btn->enable();
 			}
 			else{
