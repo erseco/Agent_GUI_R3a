@@ -38,3 +38,7 @@ Para MacOSX se utlizan los framework de OpenGL y GLUT del sistema, por lo que lo
 hay que hacer es compilar (en este caso si se compila GLUI desde include)
 
 make -f Makefile.mac
+
+
+---
+Si quieres contactar conmigo: http://www.ernesto.es
